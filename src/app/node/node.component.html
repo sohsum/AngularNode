@@ -1,0 +1,124 @@
+<div class="container">  
+  
+  <mat-card>  
+    <mat-toolbar color="accent">  
+      <div align="center" style="color:white;text-align: right;">  
+       Node Management by Sumon Sohel
+      </div>    
+    </mat-toolbar>  
+  <br><br>  
+    <mat-card-content>  
+      <form [formGroup]="nodeForm">  
+              <table>  
+                <tr>  
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="nodeId" matTooltip="Enter Node Id" matInput placeholder="nodeId">  
+                    </mat-form-field>  
+                                   </td>  
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="city" matTooltip="Enter City" matInput placeholder="city">  
+                    </mat-form-field>  
+                   
+                  </td>
+                  
+                 
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="onlineTime"  matTooltip="Enter Online Time" matInput placeholder="onlineTime">  
+                    </mat-form-field>  
+                    
+                  </td>
+                  
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="isOnline" matTooltip="Enter IsOnline" matInput placeholder="isOnline">  
+                    </mat-form-field>  
+                    </td>
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="uploadUtilization" matTooltip="Enter UploadUtilization" matInput placeholder="uploadUtilization">  
+                    </mat-form-field>  
+                   
+                  </td>
+
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="downloadUtilization" matTooltip="Enter DownloadUtilization" matInput placeholder="downloadUtilization">  
+                    </mat-form-field>  
+                    
+                  </td>
+
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="errorRate" matTooltip="Enter ErrorRate" matInput placeholder="errorRate">  
+                    </mat-form-field>  
+                     
+                     </td>
+
+                  <td class="tbl1">  
+                    <mat-form-field class="demo-full-width">  
+                      <input formControlName="connectedClients" matTooltip="Enter ConnectedClients" matInput placeholder="connectedClients">  
+                    </mat-form-field>  
+                     </td>
+
+
+
+
+                </tr>  
+                <tr>  
+                
+                  <td>  
+                    <button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button" (click)="onFormSubmit(nodeForm.value)">Submit</button>      
+                  </td><td> <button type="reset" mat-raised-button color="accent"matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>  
+                  </td><td><button type="button" mat-raised-button color="accent"matTooltip="Click Update Button" (click)="EditNode()" [disabled]=!EditEnabled>Update</button>    
+                  </td>  
+                  <td>  
+                    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">  
+                      {{massage}} 
+                       
+                    </p>  
+                  </td>  
+                </tr>  
+              </table>  
+  <br><br>  
+        <table class="table" border="1">  
+            <tr ngclass="btn-primary">  
+              <th class="tbl2">Node Id</th>  
+              <th class="tbl2">City</th> 
+               <th class="tbl2">OnlineTime</th>  
+              <th class="tbl2">IsOnline</th>  
+              <th class="tbl2">UploadUtilization</th>  
+              <th class="tbl2">DownloadUtilization</th>  
+              <th class="tbl2">ErrorRate</th>  
+              <th class="tbl2">ConnectedClients</th>   
+              
+              
+              <th class="tbl2">Edit</th>  
+              <th class="tbl2">Delete</th>  
+            </tr>  
+            <tr *ngFor="let node of allNodes ">  
+              <td class="tbl2">{{node.nodeId}}</td>  
+              <td class="tbl2">{{node.city}}</td>
+              <td class="tbl2">{{node.onlineTime}}</td>  
+              <td class="tbl2">{{node.isOnline}}</td>  
+              <td class="tbl2">{{node.uploadUtilization}}</td>  
+              <td class="tbl2">{{node.downloadUtilization}}</td>  
+              <td class="tbl2">{{node.errorRate}}</td>
+              <td class="tbl2">{{node.connectedClients}}</td>    
+                 
+              <td class="tbl2">  
+                <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="loadNodeToEdit(node.nodeId)">Edit</button>  
+              </td>  
+              <td class="tbl2">  
+                <button type="button" class="btn btn-danger"matTooltip="Click Delete Button"(click)="deleteNode(node.nodeId)">Delete</button>  
+              </td>  
+            </tr>  
+    
+          </table>  
+           </form>  
+    </mat-card-content>  
+  </mat-card>  
+  
+  </div>
